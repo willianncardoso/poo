@@ -106,24 +106,6 @@ public class CampoDeTeste{
 		return bombasVizinho;
 	}
 
-	// public void abrePosicaoAtualEVizinhos(int i, int j){
-	// 	// Base da recursão:
-
-	// 	if a posição (i,j) está fechada{
-	// 		Abra a posição (i,j).
-	// 		if (matriz[i][j]==0){
-	// 			for() cada vizinho de (i,j)
-	// 			{
-	// 				Seja (i2,j2) o vizinho atualmente examinado.
-	// 				if a posição (i2,j2) não é uma bomba
-	// 				{
-	// 					abrePosiçãoAtualEVizinhos(i2, j2)
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// }
-
 
 	public static void main (String[] args){
 		CampoDeTeste campo1 = new CampoDeTeste(4,4,1);
