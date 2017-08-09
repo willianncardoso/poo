@@ -78,26 +78,58 @@ public class CampoDeTeste2 extends CampoDeTeste {
 	
 	public int jogaCampoMinado(int operacao, int i, int j) {
 		int resultado=0;
+		int m = this.matriz.length;
+		int n = this.matriz[0].length;
 		if (operacao == 1){
 			this.abreAtualEVizinhos(i,j);
-			if(this.rotulo[i][j]==-1){
-				resultado = -1;
-				return resultado; 
+			if(this.matriz[i][j]==-1){
+				for (int inha = 0; inha < m; inha++) {
+					for (int joluna = 0; joluna < n; joluna++) {
+						this.rotulo[inha][joluna]=1;
+					}
+				}
+				return resultado = -1;
 			}
 		}
-		if (operacao == 2){
-			this.rotulo[i][j] =2;
-			resultado = 0;
-			return resultado;
+
+		//esse trecho varre a matriz em busca de algum local FECHADO,
+		//ou marcado com BOMBA mas SEM bomba,
+		// se existir, o jogo pode continuar.
+		int rotuloFechado = 0;
+
+		for (int inha = 0; inha < m; inha++) {
+			for (int joluna = 0; joluna < n; joluna++) {
+				if(this.rotulo[inha][joluna]==0 || (this.rotulo[inha][joluna]==2 && this.matriz[inha][joluna]!=-1)){
+					rotuloFechado += 1;
+				}
+			}
 		}
+		if(rotuloFechado!=0){
+			resultado =0;
+		}
+		else if (rotuloFechado==0){
+			resultado =1;
+		}
+
+		// OPERAÇÃO abre/fecha
+		if (operacao == 2){
+			if(this.rotulo[i][j]==2){
+				this.rotulo[i][j]=0;
+			}
+			else if(this.rotulo[i][j]==0){
+				this.rotulo[i][j]=2;
+			}
+			resultado=0;
+		}
+		return resultado;
 	}
 
 	public static void main( String args[] ) {
 
 		// Inicializamos com os parametros do jogo do celular.
-		int m = 9; // Total de linhas da matriz.
-		int n = 9; // Todal de colunas.
-		int q = 10; // Total de bombas.
+		int m = 3; // Total de linhas da matriz.
+		int n = 3; // Todal de colunas.
+		int q = 1; // Total de bombas.
 
 		CampoDeTeste2 C = new CampoDeTeste2(m, n, q);
 		// Algumas variaveis auxiliares:

@@ -64,7 +64,7 @@ public class CampoDeTeste{
 			while (numero1 >= linh){
 				numero1 /=10;
 			}
-			System.out.println("numero1: "+numero1);
+			System.out.println("numero1: "+numero1); //-> da as posições das BOMBAS
 			int numero2 = gerador.nextInt();
 			if (numero2 < 0){
 				numero2 *= -1;
@@ -72,7 +72,7 @@ public class CampoDeTeste{
 			while (numero2 >= colun){
 				numero2 /=10;
 			}
-			System.out.println("numero2: "+numero2);
+			System.out.println("numero2: "+numero2); //-> da as posições das BOMBAS
 			if(matriz[numero1][numero2]==0){
 				matriz[numero1][numero2]=-1;
 			} else { bombas +=1;}
@@ -86,13 +86,13 @@ public class CampoDeTeste{
 			for(int j=0;j<n;j++){
 				if (matriz[i][j]!=-1){
 					
-					this.matriz[i][j]= this.contaBombasNaVizinhança(i,j);	
+					this.matriz[i][j]= this.contaBombasNaVizinhanca(i,j);	
 				}
 			}
 		}
 	}
 
-	public int contaBombasNaVizinhança(int i, int j){
+	public int contaBombasNaVizinhanca(int i, int j){
 		int m = this.matriz.length;
 		int n = this.matriz[0].length;
 		int bombasVizinho = 0;
@@ -110,13 +110,6 @@ public class CampoDeTeste{
 	public static void main (String[] args){
 		CampoDeTeste campo1 = new CampoDeTeste(4,4,1);
 		campo1.imprimeCampoDeTeste();
-		System.out.print("Digite a operacao (1: abrir; 2: marcar/desmarcar): ");
-		int operacao = Teclado.leInteiro();
-		System.out.print("Digite a linha (comeca de 0): ");
-		int linhaDigitada = Teclado.leInteiro();
-		System.out.print("Digite a coluna (comeca de 0): ");
-		int colunaDigitada = Teclado.leInteiro();
-
 	}
 
 
